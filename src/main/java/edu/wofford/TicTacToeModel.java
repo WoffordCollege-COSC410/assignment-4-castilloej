@@ -24,6 +24,7 @@ public class TicTacToeModel {
 
     public boolean setMarkAt(int row, int col) {
 
+        if(row < 0 || row > 2 || col < 0 || col > 2){return false;}
         if(getResult() != Result.NONE){return false;}
         if(board[row][col] != Mark.EMPTY){return false;}
 
@@ -34,6 +35,7 @@ public class TicTacToeModel {
     }
 
     public Mark getMarkAt(int row, int col) {
+        if(row < 0 || row > 2 || col < 0 || col > 2){return Mark.EMPTY;}
         return board[row][col];
     }
 
@@ -51,6 +53,16 @@ public class TicTacToeModel {
 
     }
 
+    public String getResultStr(){
+
+        Result theResult = getResult();
+
+        if(theResult == Result.XWIN){return "X wins";}
+        if(theResult == Result.OWIN){return "O wins";}
+        if(theResult == Result.TIE){return "Tie";}
+        return "None";
+    }
+
     public Result getResult() {
 
         if(resultMarkWinner(Mark.XMARK)){return Result.XWIN;}
@@ -63,6 +75,10 @@ public class TicTacToeModel {
         }
 
         return Result.TIE;
+    }
+
+    public boolean IsGameOver(){
+        return (getResult() != Result.NONE);
     }
 
     private String getChar(Mark theMark){
