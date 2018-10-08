@@ -81,7 +81,7 @@ public class TicTacToeModel {
         return (getResult() != Result.NONE);
     }
 
-    private String getChar(Mark theMark){
+    public String getChar(Mark theMark){
       if(theMark == Mark.XMARK){return "X";}
       if(theMark == Mark.OMARK){return "O";}
       return " ";
